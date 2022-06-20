@@ -6,14 +6,16 @@ crds:
   create: true
 
 vcd:
-  vipSubnet: "178.170.32.1/24" # Virtual IP CIDR for the external network
+  vipSubnet: "" # Virtual IP CIDR for the external network
 
-# If you don't know about the fields below, leave the defaults.
+#################################################################
+### If you aren't syre about the fields below, leave the defaults.
+#################################################################
 
 loadbalancer:
   oneArm:
-    startIP: "192.168.8.2" # <= FILECHECK: 
-    endIP: "192.168.8.100" # <= FILECHECK: 
+    startIP: "192.168.8.2" # <= FILECHECK: Bound to disappear.
+    endIP: "192.168.8.100" # <= FILECHECK: Bound to disappear.
 
 clusterResourceSet: # <= FILECHECK: Bound to disappear.
   csi: 1.2.0
