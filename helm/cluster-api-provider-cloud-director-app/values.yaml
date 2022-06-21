@@ -9,7 +9,7 @@ vcd:
   vipSubnet: "" # Virtual IP CIDR for the external network
 
 #################################################################
-### If you aren't syre about the fields below, leave the defaults.
+### If you aren't sure about the fields below, leave the defaults.
 #################################################################
 
 loadbalancer:
