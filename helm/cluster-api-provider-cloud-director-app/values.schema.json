@@ -19,8 +19,11 @@
         "crds": {
             "type": "object",
             "properties": {
-                "create": {
+                "install": {
                     "type": "boolean"
+                },
+                "jobRegistry": {
+                    "type": "string"
                 }
             }
         },
@@ -53,6 +56,17 @@
         },
         "managementClusterRDEId": {
             "type": "string"
+        },
+        "project": {
+            "type": "object",
+            "properties": {
+                "branch": {
+                    "type": "string"
+                },
+                "commit": {
+                    "type": "string"
+                }
+            }
         },
         "resources": {
             "type": "object",

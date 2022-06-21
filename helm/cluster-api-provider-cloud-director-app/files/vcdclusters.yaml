@@ -1,17 +1,21 @@
-{{- if .Values.crds.create }}
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    cert-manager.io/inject-ca-from: {{ .Release.Namespace }}/capvcd-serving-cert
+    cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/capvcd-serving-cert'
     controller-gen.kubebuilder.io/version: v0.4.1
   labels:
+    app.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    app.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    app.kubernetes.io/instance: '{{ .Release.Name }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/name: '{{ .Chart.Name }}'
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
     cluster.x-k8s.io/provider: infrastructure-vcd
     cluster.x-k8s.io/v1alpha4: v1alpha4
     cluster.x-k8s.io/v1beta1: v1beta1
     clusterctl.cluster.x-k8s.io: ""
     clusterctl.cluster.x-k8s.io/move: ""
-    {{- include "labels.common" . | nindent 4 }}
   name: vcdclusters.infrastructure.cluster.x-k8s.io
 spec:
   conversion:
@@ -20,7 +24,7 @@ spec:
       clientConfig:
         service:
           name: capvcd-webhook-service
-          namespace: {{ .Release.Namespace }}
+          namespace: '{{ .Release.Namespace }}'
           path: /convert
       conversionReviewVersions:
       - v1
@@ -354,4 +358,3 @@ status:
     plural: ""
   conditions: []
   storedVersions: []
-{{- end }}
