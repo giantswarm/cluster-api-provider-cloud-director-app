@@ -1,7 +1,10 @@
 image:
   name: quay.io/giantswarm/cluster-api-provider-cloud-director-vcd 
   tag: 003336f
-
+project:
+  branch: "[[ .Branch ]]"
+  commit: "[[ .SHA ]]"
+  
 crds:
   create: true
 
