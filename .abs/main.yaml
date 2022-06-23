@@ -1,4 +1,4 @@
 replace-chart-version-with-git: true
 generate-metadata: true
-chart-dir: ./helm/cluster-api-provider-cloud-director-app
+chart-dir: ./helm/cluster-api-provider-cloud-director
 destination: ./build
