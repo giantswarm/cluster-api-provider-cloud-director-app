@@ -1,0 +1,32 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  annotations:
+    cert-manager.io/inject-ca-from: {{ .Release.Namespace }}/capvcd-serving-cert
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-vcd
+    {{- include "labels.common" . | nindent 4 }}
+  name: capvcd-mutating-webhook-configuration
+webhooks:
+- admissionReviewVersions:
+  - v1
+  - v1beta1
+  clientConfig:
+    service:
+      name: capvcd-webhook-service
+      namespace: {{ .Release.Namespace }}
+      path: /mutate-infrastructure-cluster-x-k8s-io-v1beta1-vcdcluster
+  failurePolicy: Fail
+  matchPolicy: Equivalent
+  name: default.vcdcluster.infrastructure.cluster.x-k8s.io
+  rules:
+  - apiGroups:
+    - infrastructure.cluster.x-k8s.io
+    apiVersions:
+    - v1beta1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - vcdclusters
+  sideEffects: None

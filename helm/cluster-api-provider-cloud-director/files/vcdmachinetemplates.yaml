@@ -1,0 +1,188 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/capvcd-serving-cert'
+    controller-gen.kubebuilder.io/version: v0.4.1
+  labels:
+    app.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    app.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    app.kubernetes.io/instance: '{{ .Release.Name }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/name: '{{ .Chart.Name }}'
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    cluster.x-k8s.io/provider: infrastructure-vcd
+    cluster.x-k8s.io/v1alpha4: v1alpha4
+    cluster.x-k8s.io/v1beta1: v1beta1
+    clusterctl.cluster.x-k8s.io: ""
+    clusterctl.cluster.x-k8s.io/move: ""
+  name: vcdmachinetemplates.infrastructure.cluster.x-k8s.io
+spec:
+  conversion:
+    strategy: Webhook
+    webhook:
+      clientConfig:
+        service:
+          name: capvcd-webhook-service
+          namespace: '{{ .Release.Namespace }}'
+          path: /convert
+      conversionReviewVersions:
+      - v1
+  group: infrastructure.cluster.x-k8s.io
+  names:
+    kind: VCDMachineTemplate
+    listKind: VCDMachineTemplateList
+    plural: vcdmachinetemplates
+    singular: vcdmachinetemplate
+  scope: Namespaced
+  versions:
+  - name: v1alpha4
+    schema:
+      openAPIV3Schema:
+        description: VCDMachineTemplate is the Schema for the vcdmachinetemplates
+          API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: VCDMachineTemplateSpec defines the desired state of VCDMachineTemplate
+            properties:
+              template:
+                properties:
+                  spec:
+                    description: Spec is the specification of the desired behavior
+                      of the machine.
+                    properties:
+                      bootstrapped:
+                        description: Bootstrapped is true when the kubeadm bootstrapping
+                          has been run against this machine
+                        type: boolean
+                      catalog:
+                        description: Catalog hosting templates
+                        type: string
+                      computePolicy:
+                        description: ComputePolicy is the compute policy to be used
+                          on this machine
+                        type: string
+                      providerID:
+                        description: ProviderID will be the container name in ProviderID
+                          format (vmware-cloud-director://<vm id>)
+                        type: string
+                      template:
+                        description: TemplatePath is the path of the template OVA
+                          that is to be used
+                        type: string
+                    type: object
+                required:
+                - spec
+                type: object
+            required:
+            - template
+            type: object
+          status:
+            description: VCDMachineTemplateStatus defines the observed state of VCDMachineTemplate
+            type: object
+        type: object
+    served: true
+    storage: false
+    subresources:
+      status: {}
+  - name: v1beta1
+    schema:
+      openAPIV3Schema:
+        description: VCDMachineTemplate is the Schema for the vcdmachinetemplates
+          API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: VCDMachineTemplateSpec defines the desired state of VCDMachineTemplate
+            properties:
+              template:
+                properties:
+                  spec:
+                    description: Spec is the specification of the desired behavior
+                      of the machine.
+                    properties:
+                      bootstrapped:
+                        description: Bootstrapped is true when the kubeadm bootstrapping
+                          has been run against this machine
+                        type: boolean
+                      catalog:
+                        description: Catalog hosting templates
+                        type: string
+                      diskSize:
+                        anyOf:
+                        - type: integer
+                        - type: string
+                        description: DiskSize is the size, in bytes, of the disk for
+                          this machine
+                        pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
+                        x-kubernetes-int-or-string: true
+                      nvidiaGPU:
+                        description: NvidiaGPU is true when a VM should be created
+                          with the relevant binaries installed If true, then an appropriate
+                          placement policy should be set
+                        type: boolean
+                      placementPolicy:
+                        description: PlacementPolicy is the placement policy to be
+                          used on this machine.
+                        type: string
+                      providerID:
+                        description: ProviderID will be the container name in ProviderID
+                          format (vmware-cloud-director://<vm id>)
+                        type: string
+                      sizingPolicy:
+                        description: SizingPolicy is the sizing policy to be used
+                          on this machine. If no sizing policy is specified, default
+                          sizing policy will be used to create the nodes
+                        type: string
+                      storageProfile:
+                        description: StorageProfile is the storage profile to be used
+                          on this machince
+                        type: string
+                      template:
+                        description: TemplatePath is the path of the template OVA
+                          that is to be used
+                        type: string
+                    type: object
+                required:
+                - spec
+                type: object
+            required:
+            - template
+            type: object
+          status:
+            description: VCDMachineTemplateStatus defines the observed state of VCDMachineTemplate
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

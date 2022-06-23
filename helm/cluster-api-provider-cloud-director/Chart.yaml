@@ -1,0 +1,15 @@
+apiVersion: v2
+version: "[[ .Version ]]"
+appVersion: "[[ .AppVersion ]]"
+name: cluster-api-provider-cloud-director
+description: A Helm chart for Cluster Api provider VMware Cloud Director (VCD)
+home: https://github.com/giantswarm/cluster-api-provider-cloud-director-app
+
+sources:
+- https://github.com/giantswarm/cluster-api-provider-cloud-director-app
+
+annotations:
+  application.giantswarm.io/team: "rocket"
+maintainers:
+- name: Team Rocket
+  email: team-rocket@giantswarm.io
