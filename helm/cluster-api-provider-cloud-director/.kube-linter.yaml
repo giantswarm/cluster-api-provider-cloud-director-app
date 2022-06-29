@@ -1,8 +1,19 @@
 checks:
   addAllBuiltIn: true
   exclude:
+  - "access-to-create-pods"
+  - "access-to-secrets"
   - "latest-tag"
+  - "minimum-three-replicas"
+  - "no-liveness-probe"
+  - "no-node-affinity"
+  - "no-readiness-probe"
   - "no-read-only-root-fs"
+  - "no-rolling-update-strategy"
+  - "non-isolated-pod"
+  - "required-annotation-email"
+  - "required-label-owner"
   - "run-as-non-root"
   - "unset-cpu-requirements"
   - "unset-memory-requirements"
+  - "use-namespace"
