@@ -1,8 +1,8 @@
 apiVersion: v2
-version: "[[ .Version ]]"
-appVersion: "[[ .AppVersion ]]"
+version: "0.1.2"
+appVersion: "0.0.1"
 name: cluster-api-provider-cloud-director
-description: A Helm chart for Cluster Api provider VMware Cloud Director (VCD)
+description: A Helm chart for Cluster API provider VMware Cloud Director (VCD)
 home: https://github.com/giantswarm/cluster-api-provider-cloud-director-app
 
 sources:
