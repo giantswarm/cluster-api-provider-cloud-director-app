@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.3] - 2022-08-01
+
 ### Fixed
 
 - Add prefix to certificate secret to prevent conflict with other certificates.
@@ -30,7 +32,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial chart implementation
 - Install CRDs via job
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/releases/tag/v0.1.0
