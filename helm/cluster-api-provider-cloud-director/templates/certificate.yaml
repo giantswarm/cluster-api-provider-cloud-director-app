@@ -13,4 +13,4 @@ spec:
   issuerRef:
     kind: Issuer
     name: capvcd-selfsigned-issuer # <= FILECHECK: SHOULD WE USE selfsigned-giantswarm?
-  secretName: webhook-server-cert
+  secretName: capvcd-webhook-server-cert
