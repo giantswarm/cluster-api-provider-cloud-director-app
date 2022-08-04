@@ -17,15 +17,6 @@ There are no credentials in the CAPVCD controller. The credentials are stored in
 
 `clusterctl init --core cluster-api:v1.1.3 -b kubeadm:v1.1.3 -c kubeadm:v1.1.3`
 
-* Set `vipSubnet` in `values.yaml`. Apart from the image, the rest of the fields can usually be skipped.
-
-In the UI `vipSubnet` is the field in `Networking > Edge Gateway > IP Management > IP Allocations > Allocated IPs > IP Block`.
-
-For instance in Ikoula:
-
-``` yaml
-vcd:
-  vipSubnet: "178.170.32.1/24"
-```
+__The vipSubnet field has been moved to the VCDCluster CRD in [cluster-cloud-director](https://github.com/vmware/cluster-api-provider-cloud-director).__
 
 * Install the chart with the values file.
