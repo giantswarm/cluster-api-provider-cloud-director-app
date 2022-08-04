@@ -2,9 +2,6 @@ image:
   name: quay.io/giantswarm/cluster-api-provider-cloud-director-vcd
   tag: befab0a
 
-vcd:
-  vipSubnet: ""  # Virtual IP CIDR for the external network
-
 project:
   branch: ""
   commit: ""
