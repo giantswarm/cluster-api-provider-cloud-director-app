@@ -8,8 +8,6 @@ metadata:
   namespace: {{ .Release.Namespace }}
 data:
   controller_manager_config.yaml: |
-    vcd:
-      vipSubnet: {{ .Values.vcd.vipSubnet }}
     loadbalancer:
       oneArm:
         startIP: {{ .Values.loadbalancer.oneArm.startIP }} # <= FILECHECK: Bound to disappear.
