@@ -94,14 +94,6 @@
                     }
                 }
             }
-        },
-        "vcd": {
-            "type": "object",
-            "properties": {
-                "vipSubnet": {
-                    "type": "string"
-                }
-            }
         }
     }
 }

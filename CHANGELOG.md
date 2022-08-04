@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Built controller image from upstream commit `befab0a`.
+- Remove deprecated `vipSubnet` configuration.
+
 ## [0.1.3] - 2022-08-01
 
 ### Fixed
