@@ -2,20 +2,6 @@
     "$schema": "http://json-schema.org/schema#",
     "type": "object",
     "properties": {
-        "clusterResourceSet": {
-            "type": "object",
-            "properties": {
-                "cni": {
-                    "type": "string"
-                },
-                "cpi": {
-                    "type": "string"
-                },
-                "csi": {
-                    "type": "string"
-                }
-            }
-        },
         "crds": {
             "type": "object",
             "properties": {
@@ -37,25 +23,6 @@
                     "type": "string"
                 }
             }
-        },
-        "loadbalancer": {
-            "type": "object",
-            "properties": {
-                "oneArm": {
-                    "type": "object",
-                    "properties": {
-                        "endIP": {
-                            "type": "string"
-                        },
-                        "startIP": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "managementClusterRDEId": {
-            "type": "string"
         },
         "project": {
             "type": "object",

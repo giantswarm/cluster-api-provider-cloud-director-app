@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Built controller image from upstream commit `befab0a`.
-- Remove deprecated `vipSubnet` configuration.
+- Remove `vipSubnet` from CAPVCD values to VCDCluster values.
+- Remove deprecated configmap.
 
 ## [0.1.3] - 2022-08-01
 

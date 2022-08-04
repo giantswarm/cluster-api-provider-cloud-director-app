@@ -66,6 +66,3 @@ spec:
         secret:
           defaultMode: 420
           secretName: capvcd-webhook-server-cert
-      - configMap:
-          name: capvcd-manager-config
-        name: controller-manager-config-volume
