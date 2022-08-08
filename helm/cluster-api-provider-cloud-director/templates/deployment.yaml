@@ -55,8 +55,6 @@ spec:
         - mountPath: /tmp/k8s-webhook-server/serving-certs
           name: cert
           readOnly: true
-        - mountPath: /etc/kubernetes/vcloud
-          name: controller-manager-config-volume
       securityContext:
         runAsNonRoot: false
       serviceAccountName: capvcd-controller-manager
@@ -66,6 +64,3 @@ spec:
         secret:
           defaultMode: 420
           secretName: capvcd-webhook-server-cert
-      - configMap:
-          name: capvcd-manager-config
-        name: controller-manager-config-volume
