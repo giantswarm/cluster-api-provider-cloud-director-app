@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Built controller image from upstream commit `8a5e8da` with fix to cloud-init.
+- Fixes cloud-init trying to pull CPI and CSI images from the wrong repos (main branch).
+
 ## [0.2.0] - 2022-08-08
 
 ### Changed
