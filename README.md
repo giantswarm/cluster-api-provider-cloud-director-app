@@ -9,11 +9,7 @@ The image is currently built manually from a specific commit since the only rele
 * Repo: https://github.com/vmware/cluster-api-provider-cloud-director/tree/main/config/default
 * Commit: `8a5e8da3676d51f4bbf0ba2900fab96443c8eb96`
 
-This build includes a fix for https://github.com/giantswarm/giantswarm/issues/23085#issuecomment-1209339260.
-
-The fix was to hardcode the [CPI](https://github.com/vmware/cluster-api-provider-cloud-director/blob/main/controllers/cluster_scripts/cloud_init.tmpl#L123) and [CSI](https://github.com/vmware/cluster-api-provider-cloud-director/blob/main/controllers/cluster_scripts/cloud_init.tmpl#L138) versions in the cloud-init script, otherwise it uses the repos from main for both, which point to an internal VMware repo we don't have access to.
-
-This is temporary workaround, future commits will move CPI and CSI to Cluster Resource Sets that we can then ignore in favor of our own `cloud-provider-cloud-director` app.
+This build includes a fix for https://github.com/giantswarm/giantswarm/issues/23085#issuecomment-1209339260. Hardcode the [CPI](https://github.com/vmware/cluster-api-provider-cloud-director/blob/main/controllers/cluster_scripts/cloud_init.tmpl#L123) and [CSI](https://github.com/vmware/cluster-api-provider-cloud-director/blob/main/controllers/cluster_scripts/cloud_init.tmpl#L138) versions in the cloud-init script, otherwise it uses the repos from main for both, which point to an internal VMware repo we don't have access to. This is temporary workaround, future commits will move CPI and CSI to Cluster Resource Sets that we can then ignore in favor of our own `cloud-provider-cloud-director` app.
 
 ## How to use
 
@@ -22,7 +18,5 @@ There are no credentials in the CAPVCD controller. The credentials are stored in
 * Install cluster API v1.1.5.
 
 `clusterctl init --core cluster-api:v1.1.5 -b kubeadm:v1.1.5 -c kubeadm:v1.1.5`
-
-__The vipSubnet field has been moved to the VCDCluster CRD in [cluster-cloud-director](https://github.com/vmware/cluster-api-provider-cloud-director).__
 
 * Install the chart with the values file.
