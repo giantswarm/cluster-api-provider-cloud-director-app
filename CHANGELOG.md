@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Built controller image from upstream commit `0fa7fa9` with fix to cloud-init.
+- New build includes new `skipRDE` switch which include `RdeID` to `VCDCluster` when __NO_RDE__ is used to fix `clusterctl move`.
+
 ## [0.2.1] - 2022-08-10
 
 ### Fixed
