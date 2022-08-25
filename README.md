@@ -7,9 +7,9 @@
 The image is currently built manually from a specific commit since the only release is outdated and `main` is the development branch. The capvcd helm chart is based on the output of `kustomize build` in the following folder:
 
 * Repo: https://github.com/vmware/cluster-api-provider-cloud-director/tree/main/config/default
-* Commit: `8a5e8da3676d51f4bbf0ba2900fab96443c8eb96`
+* Commit: `e6a551d2e142ab67957670ba9c77fa9976486636`
 
-This build includes a fix for https://github.com/giantswarm/giantswarm/issues/23085#issuecomment-1209339260. Hardcode the [CPI](https://github.com/vmware/cluster-api-provider-cloud-director/blob/main/controllers/cluster_scripts/cloud_init.tmpl#L123) and [CSI](https://github.com/vmware/cluster-api-provider-cloud-director/blob/main/controllers/cluster_scripts/cloud_init.tmpl#L138) versions in the cloud-init script, otherwise it uses the repos from main for both, which point to an internal VMware repo we don't have access to. This is temporary workaround, future commits will move CPI and CSI to Cluster Resource Sets that we can then ignore in favor of our own `cloud-provider-cloud-director` app.
+This build removes the CSI, CPI and default class from cloud-init which we will install with our own [cloud-provider-cloud-director](https://github.com/giantswarm/cloud-provider-cloud-director-app) app.
 
 ## How to use
 
