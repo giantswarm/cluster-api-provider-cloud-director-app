@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Built controller image from upstream commit `e6a551d` which removes CPI, CSI and default class from cloud-init.
+
 ## [0.2.2] - 2022-08-17
 
 ### Fixed
