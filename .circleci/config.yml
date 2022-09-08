@@ -16,3 +16,17 @@ workflows:
           filters:
             tags:
               only: /^v.*/
+
+      - architect/push-to-app-collection:
+          name: cloud-director-app-collection
+          context: "architect"
+          app_name: "cluster-api-provider-cloud-director"
+          app_collection_repo: "cloud-director-app-collection"
+          requires:
+            - push-to-control-plane-app-catalog
+          # Trigger job on git tag.
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
