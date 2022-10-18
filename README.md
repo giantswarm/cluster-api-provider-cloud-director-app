@@ -7,9 +7,7 @@
 The image is currently built manually from a specific commit since the only release is outdated and `main` is the development branch. The capvcd helm chart is based on the output of `kustomize build` in the following folder:
 
 * Repo: https://github.com/vmware/cluster-api-provider-cloud-director/tree/main/config/default
-* Commit: `e6a551d2e142ab67957670ba9c77fa9976486636`
-
-This build removes the CSI, CPI and default class from cloud-init which we will install with our own [cloud-provider-cloud-director](https://github.com/giantswarm/cloud-provider-cloud-director-app) app.
+* Commit: `60776566d6d7b13958ccb31049779957fccc8a04`
 
 ## How to use
 
