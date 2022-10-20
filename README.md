@@ -13,6 +13,8 @@ The image is currently built manually from a specific commit since the only rele
 
 There are no credentials in the CAPVCD controller. The credentials are stored in a secret in a namespace that is referenced in the cluster chart.
 
+Set `skipRDE: true` if the [VCD API schema extension](https://github.com/vmware/cluster-api-provider-cloud-director/blob/main/docs/VCD_SETUP.md#register-cluster-api-schema) wasn't registered by the cloud provider.
+
 * Install cluster API v1.1.5.
 
 `clusterctl init --core cluster-api:v1.1.5 -b kubeadm:v1.1.5 -c kubeadm:v1.1.5`
