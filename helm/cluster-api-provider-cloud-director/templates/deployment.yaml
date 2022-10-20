@@ -23,6 +23,11 @@ spec:
       - command:
         - /opt/vcloud/bin/cluster-api-provider-cloud-director
         image: {{ .Values.image.name }}:{{ .Values.image.tag }}
+        {{- if .Values.skipRDE }}
+        env:
+        - name: CAPVCD_SKIP_RDE
+          value: "true"
+        {{- end }}
         livenessProbe:
           httpGet:
             path: /healthz
