@@ -7,7 +7,7 @@
 The image is currently built manually from a specific commit since the only release is outdated and `main` is the development branch. The capvcd helm chart is based on the output of `kustomize build` in the following folder:
 
 * Repo: https://github.com/vmware/cluster-api-provider-cloud-director/tree/main/config/default
-* Commit: `60776566d6d7b13958ccb31049779957fccc8a04`
+* Commit: `22af653e351f3e788774fa6000658710b3415706`
 
 ## How to use
 
