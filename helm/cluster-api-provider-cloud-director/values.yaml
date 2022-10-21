@@ -1,6 +1,6 @@
 image:
   name: quay.io/giantswarm/cluster-api-provider-cloud-director-vcd
-  tag: e6a551d
+  tag: "22af653"
 
 project:
   branch: ""
@@ -17,3 +17,5 @@ resources:
   requests:
     cpu: 100m
     memory: 512Mi
+
+skipRDE: true

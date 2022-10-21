@@ -12,5 +12,5 @@ spec:
   - capvcd-webhook-service.{{ .Release.Namespace }}.svc.cluster.local
   issuerRef:
     kind: Issuer
-    name: capvcd-selfsigned-issuer # <= FILECHECK: SHOULD WE USE selfsigned-giantswarm?
+    name: capvcd-selfsigned-issuer
   secretName: capvcd-webhook-server-cert
