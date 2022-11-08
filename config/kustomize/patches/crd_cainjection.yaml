@@ -1,0 +1,8 @@
+---
+# The following patch adds a directive for certmanager to inject CA into the CRD
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: "ignored" # not relevant as we are applying this patch to all CAPVCD CRDs via labelSelector
+  annotations:
+    cert-manager.io/inject-ca-from: "{{ .Release.Namespace }}/capvcd-serving-cert"

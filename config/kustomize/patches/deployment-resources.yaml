@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capvcd-controller-manager
+  namespace: capvcd-system
+spec:
+  template:
+    spec:
+      containers:
+        - name: manager
+          image: "{{.Values.image.name}}:{{.Values.image.tag}}"
+          env:
+          - name: CAPVCD_SKIP_RDE
+            value: "{{ .Values.skipRDE }}"
+          resources:
+            limits:
+              cpu: "{{ .Values.resources.limits.cpu }}"
+              memory: "{{ .Values.resources.limits.memory }}"
+            requests:
+              cpu: "{{ .Values.resources.requests.cpu }}"
+              memory: "{{ .Values.resources.requests.memory }}"
+      volumes:
+      - name: cert
+        secret:
+          defaultMode: 420
+          secretName: capvcd-webhook-server-cert

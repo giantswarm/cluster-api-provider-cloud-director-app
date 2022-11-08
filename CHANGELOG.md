@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Kustomize support to generate helm manifests from upstream repos automatically.
+
 ## [0.2.4] - 2022-10-25
 
 ### Changed

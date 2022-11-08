@@ -2,11 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
+    app.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    app.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    app.kubernetes.io/instance: '{{ .Release.Name }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/name: '{{ .Chart.Name }}'
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
     cluster.x-k8s.io/provider: infrastructure-vcd
     control-plane: controller-manager
-    {{- include "labels.common" . | nindent 4 }}
+    helm.sh/chart: '{{ .Chart.Name }}'
   name: capvcd-controller-manager
-  namespace: {{ .Release.Namespace }}
+  namespace: '{{ .Release.Namespace }}'
 spec:
   replicas: 1
   selector:
@@ -22,12 +28,10 @@ spec:
       containers:
       - command:
         - /opt/vcloud/bin/cluster-api-provider-cloud-director
-        image: {{ .Values.image.name }}:{{ .Values.image.tag }}
-        {{- if .Values.skipRDE }}
         env:
         - name: CAPVCD_SKIP_RDE
-          value: "true"
-        {{- end }}
+          value: '{{ .Values.skipRDE }}'
+        image: '{{.Values.image.name}}:{{.Values.image.tag}}'
         livenessProbe:
           httpGet:
             path: /healthz
@@ -46,14 +50,12 @@ spec:
           initialDelaySeconds: 5
           periodSeconds: 10
         resources:
-          {{- with .Values.resources }}
           limits:
-            cpu: {{ .limits.cpu }}
-            memory: {{ .limits.memory }}
+            cpu: '{{ .Values.resources.limits.cpu }}'
+            memory: '{{ .Values.resources.limits.memory }}'
           requests:
-            cpu: {{ .requests.cpu }}
-            memory: {{ .requests.memory }}
-          {{- end }}
+            cpu: '{{ .Values.resources.requests.cpu }}'
+            memory: '{{ .Values.resources.requests.memory }}'
         securityContext:
           allowPrivilegeEscalation: false
         volumeMounts:
