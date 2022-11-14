@@ -4,8 +4,8 @@ SHELL := /bin/bash
 
 APPLICATION_NAME="cluster-api-provider-cloud-director"
 
-UPSTREAM_ORG="vmware"
-COMMIT_TO_SYNC="22af653"
+UPSTREAM_ORG="giantswarm"
+COMMIT_TO_SYNC="1c21c8a"
 
 .PHONY: all
 all: fetch-upstream-manifest apply-kustomize-patches delete-generated-helm-charts release-manifests ## Builds the manifests to publish with a release (alias to release-manifests)
