@@ -17,7 +17,15 @@ pushd "${REPO_NAME}"
 
 git checkout -d "${COMMIT_TO_SYNC}"
 
+# install required binaries
+make kustomize controller-gen conversion
+
 make release-manifests
+
+# build and push a corresponding image
+make docker-build
+docker tag harbor-repo.vmware.com/vcloud/cluster-api-provider-cloud-director:main-branch quay.io/giantswarm/cluster-api-provider-cloud-director-vcd:${COMMIT_TO_SYNC}
+docker push quay.io/giantswarm/cluster-api-provider-cloud-director-vcd:${COMMIT_TO_SYNC}
 
 # remote cluster-api-provider-cloud-director from the stack
 popd
