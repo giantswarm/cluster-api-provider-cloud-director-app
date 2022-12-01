@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Run capvcd controller on control plane nodes.
+
 ## [0.2.5] - 2022-11-15
 
 ### Added
