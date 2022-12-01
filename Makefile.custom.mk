@@ -5,7 +5,7 @@ SHELL := /bin/bash
 APPLICATION_NAME="cluster-api-provider-cloud-director"
 
 UPSTREAM_ORG="giantswarm"
-COMMIT_TO_SYNC="1c21c8a"
+COMMIT_TO_SYNC="5436e90"
 
 .PHONY: all
 all: fetch-upstream-manifest apply-kustomize-patches delete-generated-helm-charts release-manifests ## Builds the manifests to publish with a release (alias to release-manifests)
