@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Run capvcd controller on control plane nodes.
 
+## [0.2.6] - 2022-12-01
+
+### Changed
+
+- Consume `5436e90` from `giantswarm` fork to bring `clusterctl move` fix.
+
 ## [0.2.5] - 2022-11-15
 
 ### Added
@@ -77,7 +83,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial chart implementation
 - Install CRDs via job
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.2.5...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.2.6...HEAD
+[0.2.6]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.2.5...v0.2.6
 [0.2.5]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.2.4...v0.2.5
 [0.2.4]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.2.3...v0.2.4
 [0.2.3]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.2.2...v0.2.3
