@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Support multi-nic for machines.
+
 ## [0.2.6] - 2022-12-01
 
 ### Changed
