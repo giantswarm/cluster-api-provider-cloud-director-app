@@ -1,5 +1,5 @@
 apiVersion: v2
-version: "0.2.6"
+version: "0.3.0"
 appVersion: "0.0.1"
 name: cluster-api-provider-cloud-director
 description: A Helm chart for Cluster API provider VMware Cloud Director (VCD)
