@@ -20,4 +20,4 @@ resources:
 
 skipRDE: true
 
-priorityClass: giantswarm-critical
+priorityClass: ""
