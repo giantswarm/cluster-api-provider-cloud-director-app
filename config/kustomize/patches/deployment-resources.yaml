@@ -7,6 +7,13 @@ metadata:
 spec:
   template:
     spec:
+      tolerations:
+        - key: "node-role.kubernetes.io/control-plane"
+          operator: "Exists"
+          effect: "NoSchedule"
+      {{- if .Values.priorityClass }}
+      priorityClassName: "{{ .Values.priorityClass }}"
+      {{- end }}
       containers:
         - name: manager
           image: "{{.Values.image.name}}:{{.Values.image.tag}}"

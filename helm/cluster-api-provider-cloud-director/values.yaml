@@ -19,3 +19,5 @@ resources:
     memory: 512Mi
 
 skipRDE: true
+
+priorityClass: ""
