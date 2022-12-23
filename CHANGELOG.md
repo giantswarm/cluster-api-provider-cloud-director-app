@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Run capvcd controller on control plane nodes.
+- Add toleration and priorityClass to be able to run capvcd controller on control plane nodes.
 
 ## [0.2.6] - 2022-12-01
 

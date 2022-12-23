@@ -63,7 +63,12 @@
             }
         },
         "skipRDE": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Prevents capvcd from trying to create capvcd objects in the API. Use if the schema extension is not installed in VCD."
+        },
+        "priorityClass": {
+            "type": "string",
+            "description": "priorityClass to apply to the deployment, set it to a high priority."
         }
     }
 }
