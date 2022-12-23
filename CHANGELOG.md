@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2022-12-23
+
 ### Changed
 
 - Add toleration and priorityClass to be able to run capvcd controller on control plane nodes.
@@ -89,7 +91,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial chart implementation
 - Install CRDs via job
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.2.6...v0.3.0
 [0.2.6]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.2.5...v0.2.6
 [0.2.5]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.2.4...v0.2.5
