@@ -62,12 +62,17 @@ spec:
         - mountPath: /tmp/k8s-webhook-server/serving-certs
           name: cert
           readOnly: true
+      priorityClassName: '{{ .Values.priorityClass }}'
       securityContext:
         fsGroup: 2000
         runAsGroup: 3000
         runAsUser: 1000
       serviceAccountName: capvcd-controller-manager
       terminationGracePeriodSeconds: 10
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/control-plane
+        operator: Exists
       volumes:
       - name: cert
         secret:

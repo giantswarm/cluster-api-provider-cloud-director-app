@@ -16,7 +16,7 @@ git clone "https://github.com/${UPSTREAM_ORG}/${REPO_NAME}.git"
 pushd "${REPO_NAME}"
 
 git checkout -d "${COMMIT_TO_SYNC}"
-
+rm ./tools/*
 # install required binaries
 make kustomize controller-gen conversion
 
