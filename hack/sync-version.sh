@@ -16,7 +16,10 @@ git clone "https://github.com/${UPSTREAM_ORG}/${REPO_NAME}.git"
 pushd "${REPO_NAME}"
 
 git checkout -d "${COMMIT_TO_SYNC}"
+
+# see https://github.com/vmware/cluster-api-provider-cloud-director/pull/350
 rm ./tools/*
+
 # install required binaries
 make kustomize controller-gen conversion
 
