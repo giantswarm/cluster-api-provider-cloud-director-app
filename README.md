@@ -2,26 +2,35 @@
 
 # cluster-api-provider-cloud-director-app
 
-## Source
+Cluster API Provider Cloud Director - packaged as a Giant Swarm app.
 
-The image is currently built manually from a specific commit since the only release is outdated and `main` is the development branch. The capvcd helm chart is based on the output of `kustomize build` in the following folder:
+This repository is primary used to import the upstream Cluster API Provider Cloud Director manifests into Giant Swarm's own app catalog.
 
-* Repo: https://github.com/vmware/cluster-api-provider-cloud-director/tree/main/config/default
-* Commit: `22af653e351f3e788774fa6000658710b3415706`
+Content of the `/helm` directory will be bundled, released and pushed to the `app-catalog` via [`architect`](https://github.com/giantswarm/architect). This happens automatically and is done by [this](.circleci/config.yml) `circleCI` configuration.
+
+> To keep it quite easy to update the manifest from upstream, we don't change the fetched manifests directly. All Giant Swarm specific adjustments get applied via `kustomize`.
+
+## Usage
+
+How to work within this repository?
+
+__Note__: Because CAPVCD is in development, we currently work off a fork of upstream main where we pin specific commits as opposed to upstream releases. In [the Makefile](Makefile.custom.mk), specify the organization in `UPSTREAM_ORG` and the app name in `APPLICATION_NAME`.
+
+### apply new `kustomize` changes to the charts
+
+1. if not already done, run `make fetch-upstream-manifest` (only has to be done once)
+   > upstream manifest will be stored in [`config/kustomize/origin`](config/kustomize/origin)
+1. write your desired changes as kustomize patches in [config/kustomize]
+1. run `make apply-kustomize-patches` to apply the changes\n
+   > this will generate a patched version under [`config/kustomize/tmp`](config/kustomize/tmp)
+1. once you're done, run `make release-manifests` to move all relevant files into the [`helm/cluster-api-provider-cloud-director`](helm/cluster-api-provider-cloud-director) folder
 
 ### update to a newer CAPVCD release
 
-1. edit the value of `UPSTREAM_ORG` and `COMMIT_TO_SYNC` in [the Makefile](Makefile.custom.mk) to the desired CAPVCD version
+1. edit the value of `COMMIT_TO_SYNC` in [the Makefile](Makefile.custom.mk) to the desired commit to pin in the source repo.
 2. run `make all`
 
-## How to use
+# Useful links
 
-There are no credentials in the CAPVCD controller. The credentials are stored in a secret in a namespace that is referenced in the cluster chart.
-
-Set `skipRDE: true` if the [VCD API schema extension](https://github.com/vmware/cluster-api-provider-cloud-director/blob/main/docs/VCD_SETUP.md#register-cluster-api-schema) wasn't registered by the cloud provider.
-
-* Install cluster API v1.1.5.
-
-`clusterctl init --core cluster-api:v1.1.5 -b kubeadm:v1.1.5 -c kubeadm:v1.1.5`
-
-* Install the chart with the values file.
+* [CAPVCD doc](https://github.com/vmware/cluster-api-provider-cloud-director/blob/main/docs/QUICKSTART.md)
+* internal CAPVCD fork - [`giantswarm/cluster-api-provider-cloud-director`](https://github.com/giantswarm/cluster-api-provider-cloud-director)
