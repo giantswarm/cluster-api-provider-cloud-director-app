@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Add toleration and priorityClass to be able to run capvcd controller on control plane nodes.
+- Fix wrong IP in load balancer pool when there are multiple NICs. 
 
 ## [0.3.0] - 2022-12-13
 
