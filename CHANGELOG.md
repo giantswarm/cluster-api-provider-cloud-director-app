@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Support for vm naming.
+
+### Fixed
+
+- Wrong IP for kube-api LB when multiple NICs are used.
+
 ## [0.3.2] - 2022-12-27
 
 ### Changed
