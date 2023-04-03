@@ -17,3 +17,4 @@ checks:
   - "unset-cpu-requirements"
   - "unset-memory-requirements"
   - "use-namespace"
+  - "dnsconfig-options"
