@@ -3,6 +3,7 @@ checks:
   exclude:
   - "access-to-create-pods"
   - "access-to-secrets"
+  - "dnsconfig-options"
   - "latest-tag"
   - "minimum-three-replicas"
   - "no-liveness-probe"
