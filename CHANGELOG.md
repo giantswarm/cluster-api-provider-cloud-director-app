@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2023-04-04
+
 ### Added
 
 - Bump api version of cloud-director CRs from v1beta1 to v1beta2.
@@ -108,7 +110,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial chart implementation
 - Install CRDs via job
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.4.1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.4.1...v0.5.0
 [0.4.1]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.3.2...v0.4.0
 [0.3.2]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.3.1...v0.3.2
