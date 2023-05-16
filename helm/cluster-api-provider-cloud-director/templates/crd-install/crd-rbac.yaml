@@ -29,6 +29,7 @@ rules:
   - delete
   - get
   - patch
+{{- if .Values.psps.install }}
 - apiGroups:
   - policy
   resources:
@@ -37,6 +38,7 @@ rules:
   - {{ include "crdInstall" . }}
   verbs:
   - use
+{{- end }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding

@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Make PSPs optional since they are deprecated since k8s 1.25 (still enabled by default).
+- Add use of runtime/default seccomp profile.
 - Add toleration for new control-plane taint.
 
 ## [0.5.0] - 2023-04-04
