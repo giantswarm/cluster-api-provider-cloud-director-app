@@ -13,6 +13,14 @@
                 }
             }
         },
+        "psps": {
+            "type": "object",
+            "properties": {
+                "install": {
+                    "type": "boolean"
+                }
+            }
+        },
         "image": {
             "type": "object",
             "properties": {

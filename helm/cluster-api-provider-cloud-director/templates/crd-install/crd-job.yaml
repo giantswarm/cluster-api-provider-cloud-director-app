@@ -23,6 +23,9 @@ spec:
       securityContext:
         runAsUser: 1000
         runAsGroup: 2000
+        {{- with .Values.securityContext }}
+          {{- . | toYaml | nindent 8 }}
+        {{- end }}
       tolerations:
       - key: node-role.kubernetes.io/master
         effect: NoSchedule
@@ -41,6 +44,9 @@ spec:
           kubectl apply -f /data/ 2>&1
         securityContext:
           readOnlyRootFilesystem: true
+          {{- with .Values.podSecurityContext }}
+            {{- . | toYaml | nindent 10 }}
+          {{- end }}
         volumeMounts:
 {{- range $path, $_ := .Files.Glob "files/**" }}
         - name: {{ $path | base | trimSuffix ".yaml" }}
