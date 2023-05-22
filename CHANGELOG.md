@@ -7,11 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+**Info on breaking changes:** This release makes incompatible changes to the values schema.
+
+<details>
+<summary>How to migrate from 0.5.0</summary>
+
+To migrate from `0.5.0`, the `crds` entry in `values.yaml` has been replaced with `crdInstall`. If these were
+overridden when the chart was installed then the values must be updated to reflect the new structure. If these
+were left as default then no action is required.
+</details>
+
 ### Added
 
 - Make PSPs optional since they are deprecated since k8s 1.25 (still enabled by default).
 - Add use of runtime/default seccomp profile.
 - Add toleration for new control-plane taint.
+
+### Changed
+
+- :boom: **Breaking:** Update `kubectl` image to `1.23.15` and align CRD install values with other providers.
 
 ## [0.5.0] - 2023-04-04
 
