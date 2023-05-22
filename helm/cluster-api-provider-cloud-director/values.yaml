@@ -6,9 +6,12 @@ project:
   branch: ""
   commit: ""
 
-crds:
-  install: true
-  jobRegistry: quay.io
+crdInstall:
+  enable: true
+  kubectl:
+    image: "giantswarm/kubectl"
+    registry: quay.io
+    tag: 1.23.15
 
 resources:
   limits:

@@ -1,4 +1,4 @@
-{{- if .Values.crds.install }}
+{{- if .Values.crdInstall.enable }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -33,7 +33,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: kubectl
-        image: "{{ .Values.crds.jobRegistry }}/giantswarm/docker-kubectl:latest"
+        image: "{{ .Values.crdInstall.kubectl.registry }}/{{ .Values.crdInstall.kubectl.image }}:{{ .Values.crdInstall.kubectl.tag }}"
         command:
         - sh
         - -c
@@ -53,7 +53,7 @@ spec:
           mountPath: /data/{{ $path | base }}
           subPath: {{ $path | base }}
 {{- end }}
-        resources: {{- toYaml .Values.crds.resources | nindent 10 }}
+        resources: {{- toYaml .Values.crdInstall.resources | nindent 10 }}
       volumes:
 {{ $currentScope := . }}
 {{- range $path, $_ := .Files.Glob "files/**" }}

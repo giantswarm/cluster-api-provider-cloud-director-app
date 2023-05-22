@@ -3,7 +3,7 @@ We have to create individual configmaps for each CRD - they exceed the total
 allowed length for a configmap if they are combined.
 */}}
 {{ $currentScope := . }}
-{{- if .Values.crds.install }}
+{{- if .Values.crdInstall.enable }}
   {{- range $path, $_ := .Files.Glob "files/**" }}
     {{- with $currentScope }}
 ---
