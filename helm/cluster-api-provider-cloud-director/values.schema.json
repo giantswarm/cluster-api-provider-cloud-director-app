@@ -32,14 +32,6 @@
                 }
             }
         },
-        "ciliumNetworkPolicy": {
-            "type": "object",
-            "properties": {
-                "enabled": {
-                    "type": "boolean"
-                }
-            }
-        },
         "psps": {
             "type": "object",
             "properties": {
