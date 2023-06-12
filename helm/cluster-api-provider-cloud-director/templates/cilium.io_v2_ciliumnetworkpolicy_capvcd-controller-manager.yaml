@@ -12,7 +12,7 @@ metadata:
     cluster.x-k8s.io/provider: infrastructure-vcd
     control-plane: controller-manager
     helm.sh/chart: '{{ .Chart.Name }}'
-  name: capi-controller-manager
+  name: capvcd-controller-manager
   namespace: '{{ .Release.Namespace }}'
 spec:
   egress:
