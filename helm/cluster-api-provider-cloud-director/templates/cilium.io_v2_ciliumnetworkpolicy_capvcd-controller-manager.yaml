@@ -1,0 +1,25 @@
+{{- if .Values.ciliumNetworkPolicy.enabled }}
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  labels:
+    app.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    app.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    app.kubernetes.io/instance: '{{ .Release.Name }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/name: '{{ .Chart.Name }}'
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    cluster.x-k8s.io/provider: infrastructure-vcd
+    control-plane: controller-manager
+    helm.sh/chart: '{{ .Chart.Name }}'
+  name: capi-controller-manager
+  namespace: '{{ .Release.Namespace }}'
+spec:
+  egress:
+  - toEntities:
+    - kube-apiserver
+  endpointSelector:
+    matchLabels:
+      cluster.x-k8s.io/provider: infrastructure-vcd
+      control-plane: controller-manager
+{{- end }}

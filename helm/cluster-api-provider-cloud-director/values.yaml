@@ -40,3 +40,6 @@ securityContext:
 
 psps:
   install: true
+
+ciliumNetworkPolicy:
+  enabled: false
