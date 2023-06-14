@@ -2,6 +2,7 @@ namespace: "{{ .Release.Namespace }}"
 
 resources:
   - input/infrastructure-components.yaml
+  - resources/ciliumnetworkpolicy_capvcd-controller-manager.yaml
 
 transformers:
   - patches/common-labels.yaml

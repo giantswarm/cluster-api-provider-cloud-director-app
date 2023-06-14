@@ -22,4 +22,8 @@ spec:
     matchLabels:
       cluster.x-k8s.io/provider: infrastructure-vcd
       control-plane: controller-manager
+  ingress:
+  - fromEntities:
+    - cluster
+    - kube-apiserver
 {{- end }}

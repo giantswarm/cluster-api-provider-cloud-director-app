@@ -13,7 +13,7 @@ yq = ./bin/yq
 YQ_VERSION := 4.31.2
 
 .PHONY: all
-all: fetch-upstream-manifest apply-kustomize-patches apply-custom-patches delete-generated-helm-charts release-manifests ## Builds the manifests to publish with a release (alias to release-manifests)
+all: fetch-upstream-manifest apply-kustomize-patches apply-custom-patches delete-generated-helm-charts release-manifests wrap-with-conditional ## Builds the manifests to publish with a release (alias to release-manifests)
 
 .PHONY: fetch-upstream-manifest
 fetch-upstream-manifest: ## fetch upstream manifest from
@@ -26,7 +26,7 @@ apply-kustomize-patches: ## apply giantswarm specific patches
 
 .PHONY: apply-custom-patches
 apply-custom-patches: $(YQ) ## apply giantswarm specific patches that are not possible via kustomize
-	./hack/custom-patches.sh ${APPLICATION_NAME} ${yq}
+	./hack/custom-patches.sh
 
 #.PHONY: delete-generated-helm-charts
 delete-generated-helm-charts: # clean workspace and delete manifests
@@ -37,6 +37,10 @@ delete-generated-helm-charts: # clean workspace and delete manifests
 release-manifests: 
 	# move files from workdir over to helm directury structure
 	./hack/prepare-helmchart.sh ${APPLICATION_NAME}
+
+.PHONY: wrap-with-conditional
+wrap-with-conditional:
+	./hack/wrap-with-conditional.sh
 
 $(YQ): ## Download yq locally if necessary.
 	@echo "====> $@"
