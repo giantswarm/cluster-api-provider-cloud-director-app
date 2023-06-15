@@ -31,6 +31,12 @@ spec:
       podSelector:
         matchLabels:
           app.kubernetes.io/name: coredns
+  - ports:
+    - port: 443
+      protocol: TCP
+    to:
+    - ipBlock:
+        cidr: 0.0.0.0/0
   podSelector:
     matchLabels:
       cluster.x-k8s.io/provider: infrastructure-vcd
