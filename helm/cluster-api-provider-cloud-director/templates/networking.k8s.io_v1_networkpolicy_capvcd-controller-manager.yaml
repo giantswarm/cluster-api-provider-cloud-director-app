@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  labels:
+    app.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    app.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    app.kubernetes.io/instance: '{{ .Release.Name }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/name: '{{ .Chart.Name }}'
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    cluster.x-k8s.io/provider: infrastructure-vcd
+    control-plane: controller-manager
+    helm.sh/chart: '{{ .Chart.Name }}'
+  name: capvcd-controller-manager
+  namespace: '{{ .Release.Namespace }}'
+spec:
+  egress:
+  - ports:
+    - port: 53
+      protocol: UDP
+    - port: 1053
+      protocol: UDP
+    - port: 53
+      protocol: TCP
+    - port: 1053
+      protocol: TCP
+    to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kube-system
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: coredns
+  podSelector:
+    matchLabels:
+      cluster.x-k8s.io/provider: infrastructure-vcd
+      control-plane: controller-manager
+  policyTypes:
+  - Egress
