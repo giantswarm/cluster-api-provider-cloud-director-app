@@ -24,6 +24,13 @@ spec:
           namespaceSelector:
             matchLabels:
               kubernetes.io/metadata.name: kube-system
+    # Cloud Director API
+    - ports:
+        - port: 443
+          protocol: TCP
+      to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
   podSelector:
     matchLabels:
       cluster.x-k8s.io/provider: infrastructure-vcd
