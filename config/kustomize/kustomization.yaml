@@ -26,9 +26,3 @@ patches:
   target:
     kind: CustomResourceDefinition
     labelSelector: cluster.x-k8s.io/provider=infrastructure-vcd
-- patch: |-
-    - op: remove
-      path: /metadata/creationTimestamp
-  target:
-    kind: CustomResourceDefinition
-    labelSelector: cluster.x-k8s.io/provider=infrastructure-vcd

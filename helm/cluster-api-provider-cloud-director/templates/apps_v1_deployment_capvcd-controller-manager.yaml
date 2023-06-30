@@ -59,7 +59,7 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
               {{- with .Values.podSecurityContext }}
-                {{- . | toYaml | nindent 12 }}
+              	{{- . | toYaml | nindent 12 }}
               {{- end }}
           volumeMounts:
             - mountPath: /tmp/k8s-webhook-server/serving-certs
