@@ -17,12 +17,6 @@ pushd "${REPO_NAME}"
 
 git checkout -d "${COMMIT_TO_SYNC}"
 
-# see https://github.com/vmware/cluster-api-provider-cloud-director/pull/350
-rm ./tools/* || true
-
-# install required binaries
-make kustomize controller-gen conversion
-
 make release-manifests
 
 # remote cluster-api-provider-cloud-director from the stack
