@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -x
+set -euo pipefail
 
 # ${1} is the given application-name from make (cluster-api-provider-cloud-director)
 
