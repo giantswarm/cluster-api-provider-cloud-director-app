@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add cilium network policies to allow kube-api access.
+- Add network policies for egress.
+
 ## [0.6.0] - 2023-05-22
 
 **Info on breaking changes:** This release makes incompatible changes to the values schema.
@@ -52,7 +57,7 @@ were left as default then no action is required.
 ### Changed
 
 - Add toleration and priorityClass to be able to run capvcd controller on control plane nodes.
-- Fix wrong IP in load balancer pool when there are multiple NICs. 
+- Fix wrong IP in load balancer pool when there are multiple NICs.
 
 ## [0.3.0] - 2022-12-13
 
