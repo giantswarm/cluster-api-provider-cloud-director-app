@@ -1,27 +1,31 @@
-namespace: "{{ .Release.Namespace }}"
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: '{{ .Release.Namespace }}'
 
 resources:
-  - input/infrastructure-components.yaml
-  - resources/ciliumnetworkpolicy_capvcd-controller-manager.yaml
-  - resources/networkpolicy_capvcd-controller-manager.yaml
+- input/infrastructure-components.yaml
+- resources/ciliumnetworkpolicy_capvcd-controller-manager.yaml
+- resources/networkpolicy_capvcd-controller-manager.yaml
+- input/infrastructure-components.yaml
 
 transformers:
-  - patches/common-labels.yaml
-  - patches/monitoring-annotations.yaml
+- patches/common-labels.yaml
+- patches/monitoring-annotations.yaml
 
 patchesStrategicMerge:
-  - patches/delete-namespace.yaml
-  - patches/certificate.yaml
-  - patches/webhook-certificate.yaml
-  - patches/delete-issuer.yaml
-  - patches/deployment-resources.yaml
+- patches/delete-namespace.yaml
+- patches/certificate.yaml
+- patches/webhook-certificate.yaml
+- patches/delete-issuer.yaml
+- patches/deployment-resources.yaml
 
 patches:
-  - path: patches/crd_cainjection.yaml
-    target:
-      kind: CustomResourceDefinition
-      labelSelector: cluster.x-k8s.io/provider=infrastructure-vcd
-  - path: patches/crd_webhook.yaml
-    target:
-      kind: CustomResourceDefinition
-      labelSelector: cluster.x-k8s.io/provider=infrastructure-vcd
+- path: patches/crd_cainjection.yaml
+  target:
+    kind: CustomResourceDefinition
+    labelSelector: cluster.x-k8s.io/provider=infrastructure-vcd
+- path: patches/crd_webhook.yaml
+  target:
+    kind: CustomResourceDefinition
+    labelSelector: cluster.x-k8s.io/provider=infrastructure-vcd
