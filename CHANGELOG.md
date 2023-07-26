@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add Service monitor cr.
 
+## [0.6.1] - 2023-07-25
+
+### Added
+
+- Add cilium network policies to allow kube-api access.
+- Add network policies for egress.
+
 ## [0.6.0] - 2023-05-22
 
 **Info on breaking changes:** This release makes incompatible changes to the values schema.
@@ -56,7 +63,7 @@ were left as default then no action is required.
 ### Changed
 
 - Add toleration and priorityClass to be able to run capvcd controller on control plane nodes.
-- Fix wrong IP in load balancer pool when there are multiple NICs. 
+- Fix wrong IP in load balancer pool when there are multiple NICs.
 
 ## [0.3.0] - 2022-12-13
 
@@ -136,7 +143,8 @@ were left as default then no action is required.
 - Initial chart implementation
 - Install CRDs via job
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.6.1...HEAD
+[0.6.1]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.4.1...v0.5.0
 [0.4.1]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.4.0...v0.4.1

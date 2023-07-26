@@ -13,6 +13,9 @@ crdInstall:
     registry: quay.io
     tag: 1.23.15
 
+ciliumNetworkPolicy:
+  enabled: false
+
 resources:
   limits:
     cpu: 1000m
