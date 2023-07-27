@@ -11,7 +11,6 @@ resources:
 
 transformers:
 - patches/common-labels.yaml
-- patches/monitoring-annotations.yaml
 
 patchesStrategicMerge:
 - patches/delete-namespace.yaml
