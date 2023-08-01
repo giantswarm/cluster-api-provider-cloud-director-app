@@ -7,7 +7,6 @@ resources:
 - input/infrastructure-components.yaml
 - resources/ciliumnetworkpolicy_capvcd-controller-manager.yaml
 - resources/networkpolicy_capvcd-controller-manager.yaml
-- input/infrastructure-components.yaml
 
 transformers:
 - patches/common-labels.yaml
