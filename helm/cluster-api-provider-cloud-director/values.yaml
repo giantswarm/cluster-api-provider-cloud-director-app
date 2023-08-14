@@ -13,6 +13,9 @@ crdInstall:
     registry: quay.io
     tag: 1.23.15
 
+ciliumNetworkPolicy:
+  enabled: false
+
 resources:
   limits:
     cpu: 1000m
@@ -22,6 +25,13 @@ resources:
     memory: 512Mi
 
 skipRDE: true
+
+serviceMonitor:
+  enabled: true
+  # -- (duration) Prometheus scrape interval.
+  interval: "60s"
+  # -- (duration) Prometheus scrape timeout.
+  scrapeTimeout: "45s"
 
 priorityClass: ""
 

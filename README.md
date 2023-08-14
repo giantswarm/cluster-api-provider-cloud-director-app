@@ -24,6 +24,7 @@ __Note__: Because CAPVCD is in development, we currently work off a fork of upst
 1. run `make apply-kustomize-patches` to apply the changes\n
    > this will generate a patched version under [`config/kustomize/tmp`](config/kustomize/tmp)
 1. once you're done, run `make release-manifests` to move all relevant files into the [`helm/cluster-api-provider-cloud-director`](helm/cluster-api-provider-cloud-director) folder
+1. finally, run `make wrap-with-conditional` to wrap some manifests with `{{ if }}` statemets, e.g. `CiliumNetworkPolicy` when it's disabled 
 
 ### update to a newer CAPVCD release
 
