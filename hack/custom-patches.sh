@@ -8,11 +8,11 @@ YQ="yq"
 
 f="config/kustomize/tmp/apps_v1_deployment_capvcd-controller-manager.yaml"
 ${YQ} e '.spec.template.spec.securityContext.remove-this-key="'"
-{{- with .Values.securityContext }}
+{{- with .Values.podSecurityContext }}
   {{- . | toYaml | nindent 8 }}
 {{- end }}
 "'" | .spec.template.spec.containers[].securityContext.remove-this-key="'"
-{{- with .Values.podSecurityContext }}
+{{- with .Values.securityContext }}
   {{- . | toYaml | nindent 12 }}
 {{- end }}
 "'"' ${f} > ${f}.tmp
