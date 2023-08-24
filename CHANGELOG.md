@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Fix security issues reported by kyverno policies. 
+
 ## [0.7.0] - 2023-08-15
 
 ### Changed

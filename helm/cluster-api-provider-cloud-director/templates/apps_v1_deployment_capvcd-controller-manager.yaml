@@ -58,7 +58,7 @@ spec:
               memory: '{{ .Values.resources.requests.memory }}'
           securityContext:
             allowPrivilegeEscalation: false
-              {{- with .Values.podSecurityContext }}
+              {{- with .Values.securityContext }}
                 {{- . | toYaml | nindent 12 }}
               {{- end }}
           volumeMounts:
@@ -70,7 +70,7 @@ spec:
         fsGroup: 2000
         runAsGroup: 3000
         runAsUser: 1000
-          {{- with .Values.securityContext }}
+          {{- with .Values.podSecurityContext }}
             {{- . | toYaml | nindent 8 }}
           {{- end }}
       serviceAccountName: capvcd-controller-manager
