@@ -44,7 +44,7 @@ spec:
           kubectl apply -f /data/ 2>&1
         securityContext:
           readOnlyRootFilesystem: true
-          {{- with .Values.securityContext }}
+          {{- with .Values.containerSecurityContext }}
             {{- . | toYaml | nindent 10 }}
           {{- end }}
         volumeMounts:

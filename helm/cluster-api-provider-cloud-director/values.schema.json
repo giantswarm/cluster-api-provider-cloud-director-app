@@ -32,11 +32,16 @@
                 }
             }
         },
-        "psps": {
+        "global": {
             "type": "object",
             "properties": {
-                "install": {
-                    "type": "boolean"
+                "podSecurityStandards": {
+                    "type": "object",
+                    "properties": {
+                        "enforced": {
+                            "type": "boolean"
+                        }
+                    }
                 }
             }
         },

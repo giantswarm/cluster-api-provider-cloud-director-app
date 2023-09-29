@@ -12,7 +12,7 @@ ${YQ} e '.spec.template.spec.securityContext.remove-this-key="'"
   {{- . | toYaml | nindent 8 }}
 {{- end }}
 "'" | .spec.template.spec.containers[].securityContext.remove-this-key="'"
-{{- with .Values.securityContext }}
+{{- with .Values.containerSecurityContext }}
   {{- . | toYaml | nindent 12 }}
 {{- end }}
 "'"' ${f} > ${f}.tmp
