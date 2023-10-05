@@ -58,7 +58,7 @@ spec:
               memory: '{{ .Values.resources.requests.memory }}'
           securityContext:
             allowPrivilegeEscalation: false
-              {{- with .Values.securityContext }}
+              {{- with .Values.containerSecurityContext }}
                 {{- . | toYaml | nindent 12 }}
               {{- end }}
           volumeMounts:

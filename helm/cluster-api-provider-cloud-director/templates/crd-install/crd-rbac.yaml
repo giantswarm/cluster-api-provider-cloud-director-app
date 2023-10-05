@@ -29,7 +29,8 @@ rules:
   - delete
   - get
   - patch
-{{- if .Values.psps.install }}
+{{- if not .Values.global.podSecurityStandards.enforced }}
+{{- if .Capabilities.APIVersions.Has "policy/v1beta1/PodSecurityPolicy" }}
 - apiGroups:
   - policy
   resources:
@@ -38,6 +39,7 @@ rules:
   - {{ include "crdInstall" . }}
   verbs:
   - use
+{{- end }}
 {{- end }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
