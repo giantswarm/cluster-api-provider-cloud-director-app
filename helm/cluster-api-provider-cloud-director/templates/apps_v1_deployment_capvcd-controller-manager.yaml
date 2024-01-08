@@ -67,8 +67,6 @@ spec:
               readOnly: true
       priorityClassName: '{{ .Values.priorityClass }}'
       securityContext:
-        fsGroup: 2000
-        runAsGroup: 3000
         runAsUser: 1000
           {{- with .Values.podSecurityContext }}
             {{- . | toYaml | nindent 8 }}
