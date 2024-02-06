@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add an icon to the chart to please the linter.
+
 ### Changed
 
 - helm chart values `psps.install -> !global.podSecurityStandards.enforced`
@@ -15,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Fix security issues reported by kyverno policies. 
+- Fix security issues reported by kyverno policies.
 
 ## [0.7.0] - 2023-08-15
 

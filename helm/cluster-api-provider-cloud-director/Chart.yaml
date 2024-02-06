@@ -4,6 +4,7 @@ appVersion: "0.0.1"
 name: cluster-api-provider-cloud-director
 description: A Helm chart for Cluster API provider VMware Cloud Director (VCD)
 home: https://github.com/giantswarm/cluster-api-provider-cloud-director-app
+icon: https://s.giantswarm.io/app-icons/vmware-cloud-director/1/icon_light.png
 sources:
   - https://github.com/giantswarm/cluster-api-provider-cloud-director-app
 annotations:
