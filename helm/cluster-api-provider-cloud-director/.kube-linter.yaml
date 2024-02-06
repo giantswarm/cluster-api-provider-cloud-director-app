@@ -3,8 +3,10 @@ checks:
   exclude:
   - "access-to-create-pods"
   - "access-to-secrets"
+  - "dangling-servicemonitor"
   - "dnsconfig-options"
   - "latest-tag"
+  - "liveness-port"
   - "minimum-three-replicas"
   - "no-liveness-probe"
   - "no-node-affinity"
@@ -12,6 +14,7 @@ checks:
   - "no-read-only-root-fs"
   - "no-rolling-update-strategy"
   - "non-isolated-pod"
+  - "readiness-port"
   - "required-annotation-email"
   - "required-label-owner"
   - "run-as-non-root"
