@@ -1,7 +1,6 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  creationTimestamp: null
   labels:
     app.giantswarm.io/branch: '{{ .Values.project.branch }}'
     app.giantswarm.io/commit: '{{ .Values.project.commit }}'
