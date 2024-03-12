@@ -1,6 +1,6 @@
 image:
   name: quay.io/giantswarm/cluster-api-provider-cloud-director-vcd
-  tag: "714a6c90"
+  tag: "d889767d"
 
 project:
   branch: ""
