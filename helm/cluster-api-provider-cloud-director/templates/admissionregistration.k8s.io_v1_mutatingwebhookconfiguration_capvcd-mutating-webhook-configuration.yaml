@@ -4,8 +4,8 @@ metadata:
   annotations:
     cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/capvcd-serving-cert'
   labels:
-    app.giantswarm.io/branch: '{{ .Values.project.branch }}'
-    app.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    application.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    application.giantswarm.io/commit: '{{ .Values.project.commit }}'
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
     app.kubernetes.io/name: '{{ .Chart.Name }}'

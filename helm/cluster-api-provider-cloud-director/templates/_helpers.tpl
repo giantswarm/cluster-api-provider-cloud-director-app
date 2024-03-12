@@ -22,8 +22,8 @@ Common labels
 {{ include "labels.selector" . }}
 app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-app.giantswarm.io/branch: "{{ .Values.project.branch }}"
-app.giantswarm.io/commit: "{{ .Values.project.commit }}"
+application.giantswarm.io/branch: "{{ .Values.project.branch }}"
+application.giantswarm.io/commit: "{{ .Values.project.commit }}"
 application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantswarm.io/team" | quote }}
 helm.sh/chart: {{ include "chart" . | quote }}
 {{- end -}}
