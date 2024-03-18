@@ -1,5 +1,5 @@
 image:
-  name: quay.io/giantswarm/cluster-api-provider-cloud-director-vcd
+  name: "gsoci.azurecr.io/giantswarm/cluster-api-provider-cloud-director-vcd"
   tag: "932cf26"
 
 project:
@@ -10,7 +10,7 @@ crdInstall:
   enable: true
   kubectl:
     image: "giantswarm/kubectl"
-    registry: quay.io
+    registry: "gsoci.azurecr.io"
     tag: 1.23.15
 
 ciliumNetworkPolicy:
