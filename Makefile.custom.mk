@@ -5,7 +5,7 @@ SHELL := /bin/bash
 APPLICATION_NAME="cluster-api-provider-cloud-director"
 
 UPSTREAM_ORG="giantswarm"
-COMMIT_TO_SYNC="d889767"
+COMMIT_TO_SYNC="c5a1d6f"
 
 OS ?= $(shell go env GOOS 2>/dev/null || echo linux)
 ARCH ?= $(shell go env GOARCH 2>/dev/null || echo amd64)
