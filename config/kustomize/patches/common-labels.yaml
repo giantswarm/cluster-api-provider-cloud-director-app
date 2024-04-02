@@ -4,8 +4,8 @@ kind: LabelTransformer
 metadata:
   name: common-labels
 labels:
-  app.giantswarm.io/branch: "{{ .Values.project.branch }}"
-  app.giantswarm.io/commit: "{{ .Values.project.commit }}"
+  application.giantswarm.io/branch: "{{ .Values.project.branch }}"
+  application.giantswarm.io/commit: "{{ .Values.project.commit }}"
   app.kubernetes.io/managed-by: "{{ .Release.Service }}"
   app.kubernetes.io/version: "{{ .Chart.AppVersion }}"
   helm.sh/chart: "{{ .Chart.Name }}"
