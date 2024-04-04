@@ -3,7 +3,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/capvcd-serving-cert'
-    controller-gen.kubebuilder.io/version: v0.4.1
+    controller-gen.kubebuilder.io/version: v0.14.0
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
@@ -13,7 +13,7 @@ metadata:
     application.giantswarm.io/commit: '{{ .Values.project.commit }}'
     cluster.x-k8s.io/provider: infrastructure-vcd
     cluster.x-k8s.io/v1alpha4: v1alpha4
-    cluster.x-k8s.io/v1beta1: v1beta2
+    cluster.x-k8s.io/v1beta1: v1beta3
     clusterctl.cluster.x-k8s.io: ""
     clusterctl.cluster.x-k8s.io/move: ""
     helm.sh/chart: '{{ .Chart.Name }}'
@@ -44,14 +44,19 @@ spec:
           API
         properties:
           apiVersion:
-            description: 'APIVersion defines the versioned schema of this representation
-              of an object. Servers should convert recognized schemas to the latest
-              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
             type: string
           kind:
-            description: 'Kind is a string value representing the REST resource this
-              object represents. Servers may infer this from the endpoint the client
-              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
             type: string
           metadata:
             type: object
@@ -124,9 +129,9 @@ spec:
                           refreshToken:
                             type: string
                           secretRef:
-                            description: SecretReference represents a Secret Reference.
-                              It has enough information to retrieve secret in any
-                              namespace
+                            description: |-
+                              SecretReference represents a Secret Reference. It has enough information to retrieve secret
+                              in any namespace
                             properties:
                               name:
                                 description: name is unique within a namespace to
@@ -137,6 +142,183 @@ spec:
                                   the secret name must be unique.
                                 type: string
                             type: object
+                            x-kubernetes-map-type: atomic
+                          username:
+                            type: string
+                        type: object
+                    required:
+                    - org
+                    - ovdc
+                    - ovdcNetwork
+                    - site
+                    - userContext
+                    type: object
+                required:
+                - spec
+                type: object
+            required:
+            - template
+            type: object
+        type: object
+    served: true
+    storage: false
+    subresources:
+      status: {}
+  - name: v1beta3
+    schema:
+      openAPIV3Schema:
+        description: VCDClusterTemplate is the Schema for the vcdclustertemplates
+          API
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: VCDClusterTemplateSpec defines the desired state of VCDClusterTemplate
+            properties:
+              template:
+                properties:
+                  spec:
+                    description: VCDClusterSpec defines the desired state of VCDCluster
+                    properties:
+                      controlPlaneEndpoint:
+                        description: APIEndpoint represents a reachable Kubernetes
+                          API endpoint.
+                        properties:
+                          host:
+                            description: Host is the hostname on which the API server
+                              is serving.
+                            type: string
+                          port:
+                            description: Port is the port on which the API server
+                              is serving.
+                            type: integer
+                        required:
+                        - host
+                        - port
+                        type: object
+                      loadBalancerConfigSpec:
+                        description: LoadBalancerConfig defines load-balancer configuration
+                          for the Cluster both for the control plane nodes and for
+                          the CPI
+                        properties:
+                          useOneArm:
+                            description: UseOneArm defines the intent to une OneArm
+                              when upgrading CAPVCD from 0.5.x to 1.0.0
+                            type: boolean
+                          vipSubnet:
+                            type: string
+                        type: object
+                      multiZoneSpec:
+                        description: |-
+                          MultiZoneSpec provides details of the configuration of the zones in the cluster as well as the NetworkTopologyType
+                          used.
+                        properties:
+                          dcGroupConfig:
+                            description: DCGroupConfig contains configuration for
+                              DCGroup zone topology.
+                            type: object
+                          zoneTopology:
+                            description: |-
+                              ZoneTopology defines the type of network topology used across zones in a Multi-AZ deployment.
+                              Valid options are DCGroup, UserSpecifiedEdgeGateway, and ExternalLoadBalancer,
+                            type: string
+                          zones:
+                            description: Zones defines the list of zones that this
+                              cluster should be deployed to.
+                            items:
+                              description: Zone is an Availability Zone in VCD
+                              properties:
+                                controlPlaneZone:
+                                  default: false
+                                  description: ControlPlaneZone defines whether a
+                                    control plane node can be deployed to this zone.
+                                  type: boolean
+                                name:
+                                  description: Name defines the name of this zone.
+                                  type: string
+                                ovdcName:
+                                  description: OVDCName defines the actual name of
+                                    the OVDC which corresponds to this zone.
+                                  type: string
+                                ovdcNetworkName:
+                                  description: OVDCNetworkName defines the OVDC network
+                                    for this zone.
+                                  type: string
+                              required:
+                              - controlPlaneZone
+                              - name
+                              - ovdcName
+                              - ovdcNetworkName
+                              type: object
+                            type: array
+                        type: object
+                      org:
+                        type: string
+                      ovcdZoneConfigMap:
+                        description: |-
+                          OVDCZoneConfigMap defines the name of a config map storing the mapping Zone -> OVDC in a Multi-AZ
+                          deployment. e.g. zone1 -> ovdc1, zone2 -> ovdc2
+                        type: string
+                      ovdc:
+                        type: string
+                      ovdcNetwork:
+                        type: string
+                      parentUid:
+                        type: string
+                      proxyConfigSpec:
+                        description: ProxyConfig defines HTTP proxy environment variables
+                          for containerd
+                        properties:
+                          httpProxy:
+                            type: string
+                          httpsProxy:
+                            type: string
+                          noProxy:
+                            type: string
+                        type: object
+                      rdeId:
+                        type: string
+                      site:
+                        type: string
+                      useAsManagementCluster:
+                        default: false
+                        type: boolean
+                      userContext:
+                        properties:
+                          password:
+                            type: string
+                          refreshToken:
+                            type: string
+                          secretRef:
+                            description: |-
+                              SecretReference represents a Secret Reference. It has enough information to retrieve secret
+                              in any namespace
+                            properties:
+                              name:
+                                description: name is unique within a namespace to
+                                  reference a secret resource.
+                                type: string
+                              namespace:
+                                description: namespace defines the space within which
+                                  the secret name must be unique.
+                                type: string
+                            type: object
+                            x-kubernetes-map-type: atomic
                           username:
                             type: string
                         type: object
@@ -158,9 +340,3 @@ spec:
     storage: true
     subresources:
       status: {}
-status:
-  acceptedNames:
-    kind: ""
-    plural: ""
-  conditions: []
-  storedVersions: []
