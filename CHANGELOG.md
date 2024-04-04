@@ -9,9 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.8.0] - 2024-04-04
 
+### Added
+
+- Add support for Ignition (Flatcar).
+
 ### Changed
 
 - Pull all images from Azure Container Registry.
+- Rebase on upstream `main:a4a0d087c1e4e73cb5185bd953c558aab801efa8`
 
 ## [0.7.2] - 2024-03-08
 
