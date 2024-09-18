@@ -1,6 +1,6 @@
 image:
   name: "gsoci.azurecr.io/giantswarm/cluster-api-provider-cloud-director-vcd"
-  tag: "34209a55"
+  tag: "15b5577a"
 
 project:
   branch: ""
