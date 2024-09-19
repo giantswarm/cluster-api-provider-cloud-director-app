@@ -24,6 +24,12 @@ spec:
           namespaceSelector:
             matchLabels:
               kubernetes.io/metadata.name: kube-system
+        - podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+          namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
     # Cloud Director API
     - ports:
         - port: 443
