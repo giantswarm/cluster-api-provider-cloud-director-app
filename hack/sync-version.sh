@@ -15,7 +15,7 @@ pushd "${TMPDIR}"
 git clone "https://github.com/${UPSTREAM_ORG}/${REPO_NAME}.git"
 pushd "${REPO_NAME}"
 
-git checkout --detach "${COMMIT_TO_SYNC}"
+git checkout "${COMMIT_TO_SYNC}"
 
 make release-manifests
 
