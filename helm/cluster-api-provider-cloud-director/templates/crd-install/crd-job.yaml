@@ -31,6 +31,7 @@ spec:
         effect: NoSchedule
       - key: node-role.kubernetes.io/control-plane
         effect: NoSchedule
+      ttlSecondsAfterFinished: 86400 # 24h
       containers:
       - name: kubectl
         image: "{{ .Values.crdInstall.kubectl.registry }}/{{ .Values.crdInstall.kubectl.image }}:{{ .Values.crdInstall.kubectl.tag }}"
