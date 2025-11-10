@@ -67,6 +67,6 @@ spec:
             path: {{ $path | base }}
 {{- end }}
 {{- end }}
-      restartPolicy: Never
+  restartPolicy: OnFailure
   backoffLimit: 4
 {{- end }}
