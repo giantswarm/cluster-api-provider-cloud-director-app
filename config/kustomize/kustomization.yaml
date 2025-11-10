@@ -17,6 +17,7 @@ patchesStrategicMerge:
 - patches/webhook-certificate.yaml
 - patches/delete-issuer.yaml
 - patches/deployment-resources.yaml
+- patches/deployment-restart-policy.yaml
 
 patches:
 - path: patches/crd_cainjection.yaml

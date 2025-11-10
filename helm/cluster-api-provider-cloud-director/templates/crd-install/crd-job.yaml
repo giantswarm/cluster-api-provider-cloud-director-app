@@ -31,6 +31,8 @@ spec:
         effect: NoSchedule
       - key: node-role.kubernetes.io/control-plane
         effect: NoSchedule
+      ttlSecondsAfterFinished: 86400 # 24h
+      restartPolicy: OnFailure
       containers:
       - name: kubectl
         image: "{{ .Values.crdInstall.kubectl.registry }}/{{ .Values.crdInstall.kubectl.image }}:{{ .Values.crdInstall.kubectl.tag }}"
@@ -66,6 +68,6 @@ spec:
             path: {{ $path | base }}
 {{- end }}
 {{- end }}
-      restartPolicy: Never
   backoffLimit: 4
+  ttlSecondsAfterFinished: 86400 # 24h
 {{- end }}
