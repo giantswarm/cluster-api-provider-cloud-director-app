@@ -1,0 +1,10 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capvcd-controller-manager
+  namespace: capvcd-system
+spec:
+  template:
+    spec:
+      restartPolicy: Always
