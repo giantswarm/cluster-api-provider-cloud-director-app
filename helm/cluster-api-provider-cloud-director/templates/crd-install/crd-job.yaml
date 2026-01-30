@@ -33,6 +33,7 @@ spec:
         name: kubectl
         resources: {{- toYaml .Values.crdInstall.resources | nindent 10 }}
         securityContext:
+          allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
           {{- with .Values.containerSecurityContext }}
             {{- . | toYaml | nindent 10 }}
