@@ -8,21 +8,21 @@ allowed length for a configmap if they are combined.
     {{- with $currentScope }}
 ---
 apiVersion: v1
+data:
+  content: |
+{{ tpl ($.Files.Get $path) . | indent 4 }}
 kind: ConfigMap
 metadata:
-  name: {{ include "crdInstall" . }}-{{ $path | base | trimSuffix ".yaml" }}
-  namespace: {{ .Release.Namespace | quote }}
   annotations:
     # create hook dependencies in the right order
-    "helm.sh/hook-weight": "-5"
     {{- include "crdInstallAnnotations" . | nindent 4 }}
+    "helm.sh/hook-weight": "-5"
   labels:
     app.kubernetes.io/component: {{ include "crdInstall" . | quote }}
     {{- include "labels.selector" . | nindent 4 }}
     role: {{ include "crdInstallSelector" . | quote }}
-data:
-  content: |
-{{ tpl ($.Files.Get $path) . | indent 4 }}
+  name: {{ include "crdInstall" . }}-{{ $path | base | trimSuffix ".yaml" }}
+  namespace: {{ .Release.Namespace | quote }}
     {{- end }}
   {{- end }}
 {{- end }}

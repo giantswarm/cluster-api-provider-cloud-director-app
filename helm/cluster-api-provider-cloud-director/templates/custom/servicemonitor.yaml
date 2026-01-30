@@ -2,23 +2,21 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: '{{ $.Release.Name }}'
-  namespace: '{{ $.Release.Namespace }}'
   labels:
-    application.giantswarm.io/branch: '{{ .Values.project.branch }}'
-    application.giantswarm.io/commit: '{{ .Values.project.commit }}'
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
     app.kubernetes.io/name: '{{ .Chart.Name }}'
     app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
     cluster.x-k8s.io/provider: infrastructure-vsphere
     helm.sh/chart: '{{ .Chart.Name }}'
+  name: '{{ $.Release.Name }}'
+  namespace: '{{ $.Release.Namespace }}'
 spec:
   endpoints:
     - interval: {{ .Values.serviceMonitor.interval }}
       path: /metrics
-      targetPort: 8080
       scrapeTimeout: {{ .Values.serviceMonitor.scrapeTimeout }}
+      targetPort: 8080
   selector:
     matchLabels:
         cluster.x-k8s.io/provider: infrastructure-vcd

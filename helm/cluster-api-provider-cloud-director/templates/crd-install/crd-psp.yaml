@@ -4,16 +4,16 @@
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
-  name: {{ include "crdInstall" . }}
   annotations:
     # create hook dependencies in the right order
+    {{- include "crdInstallAnnotations" . | nindent 4 }}
     "helm.sh/hook-weight": "-6"
     seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'runtime/default'
-    {{- include "crdInstallAnnotations" . | nindent 4 }}
   labels:
     app.kubernetes.io/component: {{ include "crdInstall" . | quote }}
     {{- include "labels.selector" . | nindent 4 }}
     role: {{ include "crdInstallSelector" . | quote }}
+  name: {{ include "crdInstall" . }}
 spec:
   privileged: false
   runAsUser:
