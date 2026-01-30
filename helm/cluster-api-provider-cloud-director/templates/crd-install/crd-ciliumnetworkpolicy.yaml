@@ -3,8 +3,6 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: {{ include "crdInstall" . }}
-  namespace: {{ .Release.Namespace | quote }}
   annotations:
     # create hook dependencies in the right order
     {{- include "crdInstallAnnotations" . | nindent 4 }}
@@ -13,6 +11,8 @@ metadata:
     app.kubernetes.io/component: {{ include "crdInstall" . | quote }}
     {{- include "labels.selector" . | nindent 4 }}
     role: {{ include "crdInstallSelector" . | quote }}
+  name: {{ include "crdInstall" . }}
+  namespace: {{ .Release.Namespace | quote }}
 spec:
   endpointSelector:
     matchLabels:

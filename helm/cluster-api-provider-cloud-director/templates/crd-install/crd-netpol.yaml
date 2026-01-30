@@ -1,9 +1,7 @@
 {{- if .Values.crdInstall.enable }}
-kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
 metadata:
-  name: {{ include "crdInstall" . }}
-  namespace: {{ .Release.Namespace | quote }}
   annotations:
     # create hook dependencies in the right order
     {{- include "crdInstallAnnotations" . | nindent 4 }}
@@ -12,11 +10,9 @@ metadata:
     app.kubernetes.io/component: {{ include "crdInstall" . | quote }}
     {{- include "labels.selector" . | nindent 4 }}
     role: {{ include "crdInstallSelector" . | quote }}
+  name: {{ include "crdInstall" . }}
+  namespace: {{ .Release.Namespace | quote }}
 spec:
-  podSelector:
-    matchLabels:
-      app.kubernetes.io/component: {{ include "crdInstall" . | quote }}
-      {{- include "labels.selector" . | nindent 6 }}
   # allow egress traffic to the Kubernetes API
   egress:
   - ports:
@@ -32,6 +28,10 @@ spec:
     {{- end }}
   # deny ingress traffic
   ingress: []
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/component: {{ include "crdInstall" . | quote }}
+      {{- include "labels.selector" . | nindent 6 }}
   policyTypes:
   - Egress
   - Ingress
