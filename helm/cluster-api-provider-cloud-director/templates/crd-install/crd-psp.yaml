@@ -4,7 +4,6 @@
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
-  name: {{ include "crdInstall" . }}
   annotations:
     # create hook dependencies in the right order
     {{- include "crdInstallAnnotations" . | nindent 4 }}
@@ -14,6 +13,7 @@ metadata:
     app.kubernetes.io/component: {{ include "crdInstall" . | quote }}
     {{- include "labels.selector" . | nindent 4 }}
     role: {{ include "crdInstallSelector" . | quote }}
+  name: {{ include "crdInstall" . }}
 spec:
   privileged: false
   runAsUser:
