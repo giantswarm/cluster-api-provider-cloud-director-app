@@ -57,7 +57,6 @@ spec:
         key: node-role.kubernetes.io/master
       - effect: NoSchedule
         key: node-role.kubernetes.io/control-plane
-      ttlSecondsAfterFinished: 86400 # 24h
       volumes:
 {{ $currentScope := . }}
 {{- range $path, $_ := .Files.Glob "files/**" }}
