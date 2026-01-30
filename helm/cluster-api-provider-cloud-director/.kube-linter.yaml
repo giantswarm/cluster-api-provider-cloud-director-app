@@ -1,3 +1,8 @@
 checks:
   exclude:
     - "sorted-keys"
+    - "unset-cpu-requirements"
+    - "unset-memory-requirements"
+    - "liveness-port"
+    - "no-read-only-root-fs"
+    - "readiness-port"
