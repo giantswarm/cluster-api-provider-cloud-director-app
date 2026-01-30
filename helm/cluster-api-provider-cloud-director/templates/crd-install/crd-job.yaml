@@ -63,10 +63,10 @@ spec:
 {{- range $path, $_ := .Files.Glob "files/**" }}
     {{- with $currentScope }}
       - configMap:
-          name: {{ include "crdInstall" . }}-{{ $path | base | trimSuffix ".yaml" }}
           items:
           - key: content
             path: {{ $path | base }}
+          name: {{ include "crdInstall" . }}-{{ $path | base | trimSuffix ".yaml" }}
         name: {{ $path | base | trimSuffix ".yaml" }}
 {{- end }}
 {{- end }}
