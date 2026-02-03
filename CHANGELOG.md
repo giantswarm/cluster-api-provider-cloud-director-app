@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Rework manifests to reduce linting errors.
+- Build with up-to-date pipelines.
 
 ## [0.8.2] - 2024-09-25
 
