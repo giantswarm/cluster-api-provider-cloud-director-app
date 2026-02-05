@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+ - Added a Giant Swarm PolicyException to allow the deployment to run.
+
 ## [0.8.3] - 2026-02-03
 
 ### Changed

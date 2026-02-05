@@ -1,0 +1,24 @@
+{{- if .Capabilities.APIVersions.Has "policy.giantswarm.io/v1alpha1/PolicyException" }}
+apiVersion: policy.giantswarm.io/v1alpha1
+kind: PolicyException
+metadata:
+  labels:
+    app.kubernetes.io/instance: '{{ .Release.Name }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/name: '{{ .Chart.Name }}'
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    helm.sh/chart: '{{ .Chart.Name }}'
+  name: capvcd-controller-manager
+  namespace: policy-exceptions
+spec:
+  policies:
+  - disallow-capabilities-strict
+  - require-run-as-nonroot
+  - restrict-seccomp-strict
+  targets:
+  - kind: Deployment
+    names:
+    - capvcd-controller-manager
+    namespaces:
+    - {{ .Release.Namespace }}
+{{- end }}
