@@ -19,7 +19,7 @@ __Note__: Because CAPVCD is in development, we currently work off a fork of upst
 ### apply new `kustomize` changes to the charts
 
 1. if not already done, run `make fetch-upstream-manifest` (only has to be done once)
-   > upstream manifest will be stored in [`config/kustomize/origin`](config/kustomize/origin)
+   > upstream manifest will be stored in [`config/kustomize/input`](config/kustomize/input)
 1. write your desired changes as kustomize patches in [config/kustomize]
 1. run `make apply-kustomize-patches` to apply the changes\n
    > this will generate a patched version under [`config/kustomize/tmp`](config/kustomize/tmp)
