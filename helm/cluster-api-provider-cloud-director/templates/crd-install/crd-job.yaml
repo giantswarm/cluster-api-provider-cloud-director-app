@@ -22,13 +22,10 @@ spec:
     spec:
       containers:
       - command:
-        - sh
-        - -c
-        - |
-          set -o errexit ; set -o xtrace ; set -o nounset
-          # piping stderr to stdout means kubectl's errors are surfaced
-          # in the pod's logs.
-          kubectl apply -f /data/ 2>&1
+        - kubectl
+        - apply
+        - -f
+        - /data/
         image: "{{ .Values.crdInstall.kubectl.registry }}/{{ .Values.crdInstall.kubectl.image }}:{{ .Values.crdInstall.kubectl.tag }}"
         name: kubectl
         resources: {{- toYaml .Values.crdInstall.resources | nindent 10 }}
