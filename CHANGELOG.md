@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.6-rc.1] - 2026-11-24
+
 ### Fixed
 
 - Restore `podSecurityContext` and `containerSecurityContext` in the controller Deployment (dropped in 0.8.3), so fresh installs pass Kyverno's PSS policies.
@@ -214,7 +216,8 @@ were left as default then no action is required.
 - Initial chart implementation
 - Install CRDs via job
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.8.5...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.8.6-rc.1...HEAD
+[0.8.6-rc.1]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.8.5...v0.8.6-rc.1
 [0.8.5]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.8.4...v0.8.5
 [0.8.4]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.8.3...v0.8.4
 [0.8.3]: https://github.com/giantswarm/cluster-api-provider-cloud-director-app/compare/v0.8.2...v0.8.3
