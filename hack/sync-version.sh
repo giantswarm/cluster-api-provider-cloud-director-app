@@ -15,6 +15,8 @@ pushd "${TMPDIR}"
 git clone "https://github.com/${UPSTREAM_ORG}/${REPO_NAME}.git"
 pushd "${REPO_NAME}"
 
+# Fetch by full SHA: the commit is not on any branch.
+git fetch origin "${COMMIT_TO_SYNC}"
 git checkout "${COMMIT_TO_SYNC}"
 
 make release-manifests
